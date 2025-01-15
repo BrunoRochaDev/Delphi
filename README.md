@@ -4,14 +4,14 @@
   <br />
 </div>
 
-**Delphi** is a Python library for conducting **CBC padding oracle attacks**.
+**Delphi** is a Python library for conducting **CBC padding oracle attacks**—a cryptographic technique that exploits padding validation to decrypt ciphertexts or forge new ones.
 
-This library simplifies the creation of Padding Oracle Attack proof-of-concept scripts by providing generic encryption and decryption attack functions. Simply define your custom oracle checking function and use the provided utilities.
+This library simplifies padding oracle attacks by providing versatile functions for encryption and decryption that can be seamlessly integrated into your custom PoC scripts targeting specific systems.
 
 ## Features
 
 - **Decryption Attacks:** Recover plaintext from encrypted messages.
-- **Encryption Attacks:** Forge ciphertexts that decrypt to any desired plaintext.
+- **Encryption Attacks:** Forge ciphertexts to produce any desired plaintext.
 - **Flexible IV Control:** Supports both scenarios where the Initialization Vector is controllable and where it isn’t.
 - **Seamless Integration:** Easily incorporate into PoC scripts tailored to your target.
 
@@ -34,6 +34,12 @@ Next, create your own Python script within this directory. To use Delphi, follow
 3. Call the `encrypt` and/or `decrypt` functions from Delphi, supplying the necessary arguments.
 
 The [`example.py`](https://github.com/BrunoRochaDev/Delphi/blob/main/example.py) file is included to illustrate how Delphi's functions, defined in `delphi.py`, can be utilized in a practical PoC.
+
+## How It Works
+
+For an in-depth explanation of padding oracle attacks, check out my blog post: [How To Exploit Padding Oracles](https://www.brunorochamoura.com/posts/cbc-padding-oracle/).
+
+This post delves into the cryptographic concepts behind the attack, showcases a hypothetical web application vulnerable to it, and demonstrates a PoC leveraging Delphi to exploit the vulnerability.
 
 ## Disclaimer
 
