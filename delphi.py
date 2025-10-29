@@ -131,7 +131,8 @@ def _get_intermediary_value(block : bytes, oracle : callable) -> bytes:
     # Iterate over each possible padding length from 1 onward up to the block size.
     for pad_val in range(1, BLOCK_SIZE+1):
         # Create a padding IV by XORing the zeroing IV with the padding length.
-        padding_iv = [pad_val ^ b for b in zeroing_iv]
+        padding_iv = [0] * (BLOCK_SIZE - pad_val)                   # For this attack, the values of these bytes are not relevant.
+        padding_iv += [pad_val ^ b for b in zeroing_iv[-pad_val:]]  # XORing the zeroing IV with the padding length.
 
         # Test all possible byte values from 0 to 255 for the current padding position.
         for candidate in range(256):
@@ -167,3 +168,4 @@ def _get_intermediary_value(block : bytes, oracle : callable) -> bytes:
             print(f'Byte completed [{pad_val}/{BLOCK_SIZE}]')
 
     return zeroing_iv
+
